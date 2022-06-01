@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import {Avatar} from '@material-ui/core'
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -6,7 +6,42 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import ArticleIcon from '@mui/icons-material/Article';
 import './css/feed.css'
 import Post from './Post'
+import firebase from "firebase/compat/app"
+import 'firebase/compat/firestore';
+import { db } from "./firebase"; 
+
 const Feed = () => {
+
+  const [posts,setPost] = useState([]);
+  const [input,setInput] = useState();
+
+  const submitPost=(e)=>{
+    e.preventDefault();
+      db.collection("posts").add({
+      name:"Rahul Mane",
+      discription:"this is test",
+      message:"we are learning",
+      photourl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU",
+      timestamp:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    setInput(" ");
+  }
+
+  useEffect(() => {
+    db.collection("posts").orderBy("timestamp","desc").onSnapshot(snapshot=>{
+      setPost(snapshot.docs.map(doc=>({
+          id:doc.id,
+          data:doc.data()
+      })))
+    })
+    
+    
+  }, [])
+
+  console.log(posts);
+  
+
+
   return (
     <>
 <div className='feed'>
@@ -14,8 +49,8 @@ const Feed = () => {
     <div className='feed__form'>
       <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
       
-      <form action="">
-      <input type="text" placeholder='Start a post' />
+      <form onSubmit={submitPost}>
+      <input type="text" placeholder='Start a post' value = { input } onChange={e=>setInput(e.target.value)}/>
       <input type="submit" />
       </form>
     </div>
@@ -47,22 +82,16 @@ const Feed = () => {
   </div> 
 
   <div>
-    <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+
+    {
+      posts.map(({id,data:{name,discription,message,photourl}})=>{
+          return <Post name = {name} discription = {discription} message = {message}
+          photourl = {photourl}/>
+      })
+    }
     
-    <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
-
-<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
-      <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
-
-<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
-
-<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
-      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+    
+ 
   </div>  
 </div>
   

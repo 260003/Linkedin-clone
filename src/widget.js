@@ -30,6 +30,7 @@ const Widget = () => {
                     <h4> A Two Pizza rule for eating </h4>
                     <p> 2d ago * 6,12 readers </p>
                     </li>
+                    
 
                     <li>
                     <h4> A Two Pizza rule for eating </h4>
