@@ -12,7 +12,8 @@ const Feed = () => {
 <div className='feed'>
   <div className='feed__input'>
     <div className='feed__form'>
-      <Avatar/>
+      <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+      
       <form action="">
       <input type="text" placeholder='Start a post' />
       <input type="submit" />
@@ -46,11 +47,22 @@ const Feed = () => {
   </div> 
 
   <div>
-    <Post/>
-    <Post/>
-    <Post/>
-    <Post/>
-    <Post/>
+    <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+    
+    <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+
+<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+      <Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+
+<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
+
+<Post name = "Rahul mane" discription = "This is Test" message = " we are learning"
+      photourl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzuY2Si3nXBYTAsDFkpWJw4TewBh1pzcNYXw&usqp=CAU"/>
   </div>  
 </div>
   

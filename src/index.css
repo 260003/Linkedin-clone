@@ -14,9 +14,9 @@ code {
 }
 
 .app_body{
-  width: 63%;
+  width: 80%;
   padding: 0px 15%;
   display: flex;
   margin-top: 20px;
-  margin-left: -40px;
+  margin-left: -50px;
 }

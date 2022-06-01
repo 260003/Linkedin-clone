@@ -3,7 +3,7 @@ import './App.css'
 import Header from './header';
 import Sidebar from './Sidebar'
 import Feed from './Feed'
-import Tp from './tp'
+import Widget from './widget'
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <div className='app_body'>
       <Sidebar/>
       <Feed/>
-      <Tp/>
+      <Widget/>
     </div>
 
 
